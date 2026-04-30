@@ -31,10 +31,10 @@ jobs:
             ls: dir
             target: x86_64
             python-architecture: x64
-            interpreter: 3.9 3.10 3.11 3.12 3.13
+            interpreter: "3.9 3.10 3.11 3.12 3.13"
           - os: macos
             target: aarch64
-            interpreter: 3.9 3.10 3.11 3.12 3.13
+            interpreter: "3.9 3.10 3.11 3.12 3.13"
           - os: ubuntu
             platform: linux
             target: aarch64
@@ -58,6 +58,7 @@ jobs:
 
       - name: Move sgl-model-gateway folder to root and delete sglang-repo
         run: |
+          shopt -s dotglob
           mv sglang-repo/sgl-model-gateway/* .
           rm -rf sglang-repo
           ls -alt
