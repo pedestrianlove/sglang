@@ -23,6 +23,7 @@ jobs:
         os: [ubuntu, macos, windows]
         target: [x86_64, aarch64]
         manylinux: [auto]
+        # Linux builds include Python 3.14; Windows/macOS are limited to 3.9-3.13.
         interpreter: ["3.9 3.10 3.11 3.12 3.13 3.14"]
         include:
           - os: ubuntu
@@ -31,9 +32,11 @@ jobs:
             ls: dir
             target: x86_64
             python-architecture: x64
+            # Windows wheels are published only for 3.9-3.13 currently.
             interpreter: "3.9 3.10 3.11 3.12 3.13"
           - os: macos
             target: aarch64
+            # macOS wheels are published only for 3.9-3.13 currently.
             interpreter: "3.9 3.10 3.11 3.12 3.13"
           - os: ubuntu
             platform: linux
