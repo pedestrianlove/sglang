@@ -126,7 +126,6 @@ jobs:
 
   release:
     needs: build
-    if: github.repository == 'sgl-project/sglang'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
