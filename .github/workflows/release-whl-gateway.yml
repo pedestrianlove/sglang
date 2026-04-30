@@ -14,7 +14,6 @@ permissions:
 
 jobs:
   build:
-    if: github.repository == 'sgl-project/sglang'
     name: build on ${{ matrix.platform || matrix.os }} (${{ matrix.target }} - ${{ matrix.manylinux || 'auto' }})
     runs-on: ${{ matrix.os }}-latest
     strategy:
@@ -126,7 +125,6 @@ jobs:
           path: bindings/python/dist/
 
   release:
-    if: github.repository == 'sgl-project/sglang'
     needs: build
     runs-on: ubuntu-latest
     steps:
