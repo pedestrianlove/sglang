@@ -23,6 +23,7 @@ jobs:
         os: [ubuntu, macos, windows]
         target: [x86_64, aarch64]
         manylinux: [auto]
+        interpreter: ["3.9 3.10 3.11 3.12 3.13 3.14"]
         include:
           - os: ubuntu
             platform: linux
@@ -85,7 +86,7 @@ jobs:
           working-directory: bindings/python
           target: ${{ matrix.target }}
           manylinux: ${{ matrix.manylinux || 'auto' }}
-          args: --release --out dist --features vendored-openssl --interpreter ${{ matrix.interpreter || '3.9 3.10 3.11 3.12 3.13 3.14' }}
+          args: --release --out dist --features vendored-openssl --interpreter ${{ matrix.interpreter }}
           rust-toolchain: stable
           docker-options: -e CI -e CC_aarch64_unknown_linux_gnu=aarch64-linux-gnu-gcc -e CXX_aarch64_unknown_linux_gnu=aarch64-linux-gnu-g++
           before-script-linux: |
